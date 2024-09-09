@@ -1,1 +1,40 @@
-chat_app/venv
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# virtual Environment
+/chat_app/venv
+
+
+# dependencies
+chat-frontend/node_modules
+chat-frontend/.pnp
+chat-frontend/.pnp.js
+chat-frontend/.yarn/install-state.gz
+
+# testing
+chat-frontend/coverage
+
+# next.js
+chat-frontend/.next/
+chat-frontend/out/
+
+# production
+chat-frontend/build
+
+# misc
+chat-frontend/.DS_Store
+chat-frontend/*.pem
+
+# debug
+chat-frontend/npm-debug.log*
+chat-frontend/yarn-debug.log*
+chat-frontend/yarn-error.log*
+
+# local env files
+chat-frontend/.env*.local
+
+# vercel
+chat-frontend/.vercel
+
+# typescript
+chat-frontend/*.tsbuildinfo
+chat-frontend/next-env.d.ts
