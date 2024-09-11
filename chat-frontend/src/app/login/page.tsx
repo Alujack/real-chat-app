@@ -15,7 +15,8 @@ const LoginPage: React.FC = () => {
 
     // Add your login logic here (e.g., call an API)
     if (username === 'user' && password === 'pass') {
-      router.push('/groupcreation');
+      // Redirect to the avatar selection page after successful login
+      router.push('/avatarselector'); 
     } else {
       setError('Invalid username or password');
     }

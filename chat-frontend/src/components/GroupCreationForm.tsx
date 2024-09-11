@@ -28,32 +28,36 @@ const GroupCreationForm: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <form onSubmit={handleCreateGroup}>
-        {error && <p className={styles.error}>{error}</p>}
-        <input
-          type="text"
-          className={styles.inputField}
-          value={groupName}
-          onChange={(e) => setGroupName(e.target.value)}
-          placeholder="Group Name"
-          required
-        />
-        <button type="submit" className={styles.button}>Create Group</button>
-      </form>
-      <div className={styles.groupList}>
-        <h3>Groups</h3>
-        <ul>
-          {groups.map((group, index) => (
-            <li
-              key={index}
-              onClick={() => handleGroupClick(group)}
-              className={styles.groupItem}
-            >
-              {group}
-            </li>
-          ))}
-        </ul>
+    <div className={styles.center}>
+      <div className={styles.container}>
+        <form onSubmit={handleCreateGroup}>
+          {error && <p className={styles.error}>{error}</p>}
+          <input
+            type="text"
+            className={styles.inputField}
+            value={groupName}
+            onChange={(e) => setGroupName(e.target.value)}
+            placeholder="Group Name"
+            required
+          />
+        </form>
+        <div className={styles.groupList}>
+          <h3>Groups</h3>
+          <ul>
+            {groups.map((group, index) => (
+              <li
+                key={index}
+                onClick={() => handleGroupClick(group)}
+                className={styles.groupItem}
+              >
+                {group}
+              </li>
+            ))}
+          </ul>
+          <button className={styles.addButton} onClick={handleCreateGroup}>
+            +
+          </button>
+        </div>
       </div>
     </div>
   );
