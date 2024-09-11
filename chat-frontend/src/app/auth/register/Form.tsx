@@ -1,85 +1,80 @@
+"use client";
 
-"use client"
-import Spinner from "@/components/Spinner"
-
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Spinner from "@/components/Spinner";
 import { useRegister } from '@/hooks';
-const RegisterForm = ({ ...props }) => {
-    const {
-        email,
-        username,
-        password,
-        isloading,
-        onChange,
-        onSubmit,
-    } = useRegister();
-    return (
-        <>
-            <div {...props}>
-                <div className="flex flex-col self-stretch gap-2.5">
-                    <h1 className="!text-black-900_01 tracking-[-2.00px] !font-poppins text-center">
-                        Create Free Account
-                    </h1>
-                    <p
-                        className=" md:w-full !text-blue_gray-700_01 !font-poppins text-center leading-[30px]"
-                    >
-                        Clarity gives you the blocks and components you need to create a truly professional website.
-                    </p>
-                </div>
-                <form onSubmit={onSubmit}>
-                    <div className=" size-3xl flex flex-col self-stretch items-center justify-center gap-[23px] p-[25px] sm:p-5 bg-white-A700 shadow-xs rounded-[20px]">
+import styles from '../../../styles/RegisterForm.module.css'; // Ensure styles are updated in this file
 
-    
-                        <input
+const RegisterPage: React.FC = () => {
+  const { email, username, password, isloading, onChange, onSubmit } = useRegister();
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
-                            type="email"
-                            name="email"
-                            placeholder={`Email Address`}
-                            value={email}
-                            onChange={onChange}
-                            className="size-3xl self-stretch sm:px-5 !text-blue_gray-700_01 font-poppins border-gray-300_02 border border-solid rounded-[9px]"
-                        />
-                        <input
+  const handleRegister = (e: React.FormEvent) => {
+    e.preventDefault();
 
-                            type="text"
-                            name="username"
-                            placeholder={`Create Username`}
-                            value={username}
-                            onChange={onChange}
-                            className="text-4xl self-stretch sm:px-5 text-blue_gray-700_01 font-poppins border-gray-300_02 border border-solid rounded-[9px]"
-                        />
-        
-                        <input
+    // Add your registration logic here (e.g., call an API)
+    if (username && email && password) {
+      // Simulate successful registration
+      router.push('/auth/login');
+    } else {
+      setError('Please fill in all fields.');
+    }
+  };
 
-                            type="password"
-                            name="password"
-                            placeholder={`Create Password`}
-                            value={password}
-                            onChange={onChange}
-                            className="text-4xl self-stretch sm:px-5 text-blue_gray-700_01 font-poppins border-gray-300_02 border border-solid rounded-[9px]"
-                        />
-        
-                        <input
-                            type='checkbox'
-                            name="shape"
-                            id="shape"
-                            className="self-start ml-[5px] gap-[9px] p-px md:ml-0 text-black-900_01 font-poppins text-left text-sm"
-                        />
-                        <button
-                            type='submit'
-                            className='flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-                        >
-                            {`Sign Up`}
-                        </button>
-                        <p className="mb-[3px] !text-gray-600 !font-poppins text-center">
-                            <span className="text-gray-600">Already have an account?&nbsp;</span>
-                            <Link href="/auth/login"><span className="text-blue-A700 font-semibold">Sign in</span></Link>
-                        </p>
-                    </div>
-                </form>
-            </div>
-        </>
-    );
+  return (
+    <div className={styles.center}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>Signup</h2>
+        <p className={styles.subtitle}>Create your free account</p>
+        <form onSubmit={handleRegister} className={styles.form}>
+          {error && <p className={styles.error}>{error}</p>}
+          {isloading && <Spinner />}
+
+          <input
+            type="text"
+            name="username"
+            value={username}
+            onChange={onChange}
+            placeholder="Enter Your Username"
+            className={styles.inputField}
+            required
+          />
+
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={onChange}
+            placeholder="Enter Your Email"
+            className={styles.inputField}
+            required
+          />    
+
+          <div className={styles.passwordContainer}>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={onChange}
+              placeholder="Enter Your Password"
+              className={styles.inputField}
+              required
+            />
+            <span className={styles.passwordToggleIcon}>👁️</span> {/* Placeholder icon */}
+          </div>
+
+          <button type="submit" className={styles.button}>Signup</button>
+        </form>
+
+        <p className={styles.footerText}>
+          Already have an account? <Link href="/login" className={styles.link}>Login</Link>
+        </p>
+      </div>
+    </div>
+  );
 };
 
-export default RegisterForm;
+export default RegisterPage;
