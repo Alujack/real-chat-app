@@ -18,10 +18,7 @@ const HomePage: React.FC = () => {
   }, [router]);
 
   return (
-    <div>
-      <h1>Welcome to the App</h1>
-      <p>Redirecting...</p>
-    </div>
+   <main className="w-[100vw] h-[100vh] flex items-center justify-center"><h1 className="text-9xl self-center">hello</h1> </main>
   );
 };
 
