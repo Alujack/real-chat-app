@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* flowbite framwwork */
+@import 'flowbite';
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;

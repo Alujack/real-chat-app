@@ -10,7 +10,6 @@ const ChatPage: React.FC = () => {
 
   return (
     <div>
-      <h1>Chat Room: {groupName}</h1>
       <ChatWindow groupName={groupName} />
     </div>
   );
