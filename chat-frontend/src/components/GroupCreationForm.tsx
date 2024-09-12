@@ -7,7 +7,7 @@ import styles from '../styles/GroupCreation.module.css';
 const GroupCreationForm: React.FC = () => {
   const [groupName, setGroupName] = useState('');
   const [error, setError] = useState<string | null>(null);
-  const [groups, setGroups] = useState<string[]>([]);
+  const [groups, setGroups] = useState<string[]>(['Default Group']); // Initialize with a default group
   const router = useRouter();
 
   const handleCreateGroup = (e: React.FormEvent) => {
@@ -40,6 +40,9 @@ const GroupCreationForm: React.FC = () => {
             placeholder="Group Name"
             required
           />
+          <button type="submit" className={styles.addButton}>
+            Create
+          </button>
         </form>
         <div className={styles.groupList}>
           <h3>Groups</h3>
@@ -54,9 +57,6 @@ const GroupCreationForm: React.FC = () => {
               </li>
             ))}
           </ul>
-          <button className={styles.addButton} onClick={handleCreateGroup}>
-            +
-          </button>
         </div>
       </div>
     </div>
