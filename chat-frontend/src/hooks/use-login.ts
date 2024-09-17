@@ -1,7 +1,6 @@
 "use client"
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { toast } from 'react-toastify';
 import axios from "axios"
 
 
@@ -28,6 +27,7 @@ export default function useLogin() {
 			)
 			if (resopnse) {
 				console.log('succesfully')
+				router.push('/avatarselector');
 			}
 		} catch (err) {
 			console.error(err)

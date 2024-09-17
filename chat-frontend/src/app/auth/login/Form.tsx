@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
-import Spinner from "@/components/Spinner";
 import { useLogin } from "@/hooks";
 import styles from '../../../styles/LoginForm.module.css'; // Ensure styles are updated in this file
 
@@ -29,7 +28,8 @@ const LoginPage: React.FC = () => {
       <div className={styles.container}>
         <h2 className={styles.title}>Login</h2>
         <p className={styles.subtitle}>Welcome back!</p>
-        <form onSubmit={handleLogin} className={styles.form}>
+        {/* <form onSubmit={handleLogin} className={styles.form}> */}
+        <form onSubmit={onSubmit} className={styles.form}>
           {error && <p className={styles.error}>{error}</p>}
           
           <input
