@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Spinner from "@/components/Spinner";
 import { useRegister } from '@/hooks';
 import styles from '../../../styles/RegisterForm.module.css'; // Ensure styles are updated in this file
 
@@ -29,10 +28,9 @@ const RegisterPage: React.FC = () => {
       <div className={styles.container}>
         <h2 className={styles.title}>Signup</h2>
         <p className={styles.subtitle}>Create your free account</p>
-        <form onSubmit={handleRegister} className={styles.form}>
+        {/* <form onSubmit={handleRegister} className={styles.form}> */}
+          <form onSubmit={onSubmit} className={styles.form}>
           {error && <p className={styles.error}>{error}</p>}
-          {isloading && <Spinner />}
-
           <input
             type="text"
             name="username"

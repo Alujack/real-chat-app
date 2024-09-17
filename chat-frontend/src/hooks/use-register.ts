@@ -30,7 +30,6 @@ export default function useRegister() {
 			)
 			if (resopnse) {
 				console.log('succesfully')
-				setIsloading(false)
 			}
 		} catch (err) {
 			console.error(err)
